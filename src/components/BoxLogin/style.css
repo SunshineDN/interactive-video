@@ -3,17 +3,34 @@
     height: 30px;
 }
 
-.radio{
-    border-color: white;
-    text-align: center;
-}
-
-.main{
-    text-align: center;
-}
-
 input{
     width: 180;
-    height: 30px; ;
+    height: 30px;
 }
 
+.input-wrapper{
+    display: flex;
+    flex-direction: column;
+}
+
+.passLabel{
+    margin-top: 20px;
+}
+
+.container {
+    height: 100vh;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.radio-wrapper {
+    margin: 20px 0;
+}
+
+.radios {
+    display: flex;
+    align-items: center;
+    gap: 0 5px;
+}

@@ -1,9 +1,14 @@
 import React from 'react'
-import "./style.css"
-const index = () => {
+import { FooterContainer, Span } from './styles'
+
+const Footer = () => {
     return (
-        <div>Rodape</div>
+        <>
+            <FooterContainer>
+                <Span>Desenvolvido por Douglas Augusto</Span>
+            </FooterContainer>
+        </>
     )
 }
 
-export default index
+export default Footer

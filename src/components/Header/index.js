@@ -1,10 +1,13 @@
 import React from 'react'
-import index from '../Footer'
-import "./style.css"
+import { H1, HeaderContainer } from './styles'
 
 
 export default function Header() {
     return (
-        <div>Header</div>
+        <>
+            <HeaderContainer>
+                <H1>VOSCE</H1>
+            </HeaderContainer>
+        </>
     )
 }

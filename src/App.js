@@ -1,11 +1,20 @@
 import React from 'react'
-import './App.css';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Login from './pages/Login';
+import Aluno from './pages/Aluno';
+import Professor from './pages/Professor';
+
 function App() {
   return (
-    <div>
-      <Login/>
-    </div>
+    <>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Login />} />
+          <Route path="/aluno" element={<Aluno />} />
+          <Route path="/professor" element={<Professor />} />
+        </Routes>
+      </BrowserRouter>
+    </>
   );
 }
 

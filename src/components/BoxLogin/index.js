@@ -1,25 +1,14 @@
 import React, { useState } from 'react'
-import { useNavigate } from 'react-router';
 import { Container, Input, InputWrapper, Label, Radios, RadioWrapper, Submit } from './styles';
 
 const BoxLogin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [cargo, setCargo] = useState("");
-  const navigate = useNavigate;
-
-  function handleNavigate(e) {
-    e.preventDefault();
-    if (cargo === "Aluno") {
-      navigate("/aluno")
-    } else if (cargo === "Professor") {
-      navigate("/professor")
-    }
-  }
 
   return (
     <>
-      <Container onSubmit={e => handleNavigate(e)}>
+      <Container action={cargo}>
         <InputWrapper>
           <Label htmlFor='user'>Email</Label>
           <Input id='user' type="email" value={email} onChange={e => setEmail(e.target.value)} />

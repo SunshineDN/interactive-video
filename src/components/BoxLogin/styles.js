@@ -1,7 +1,9 @@
 import styled from "styled-components";
+import { AiOutlineCloseCircle } from "react-icons/ai"
 
 export const Container = styled.form`
     height: 100vh;
+    font-family: 'Source Sans Pro', sans-serif;
     margin: 100px auto 0 auto;
     max-width: 400px;
     display: flex;
@@ -35,7 +37,6 @@ export const Input = styled.input.attrs({
 `
 
 export const Label = styled.label`
-    font-family: 'Source Sans Pro', sans-serif;
     font-size: 1.1em;
     user-select: none;
     font-weight: 600;
@@ -59,7 +60,7 @@ export const Radios = styled.div`
 
 export const Submit = styled.input.attrs({
     type: "submit",
-    value: "Entrar"
+    value: "Entrar",
 })`
     text-align: center;
     color: #f4f7f9;
@@ -73,9 +74,42 @@ export const Submit = styled.input.attrs({
     border: none;
     border-radius: 4px;
     transition: all .2s ease-in-out;
+    &:disabled {
+      cursor: not-allowed;
+      background-color: gray;
+      opacity: .5;
+    }
+    &:disabled:hover{
+      background-color: gray;
+      border:none;
+      color: white;
+    }
     &:hover {
         color: #8da833;
         background-color: #f4f7f9;
         border: 2px solid rgba(119, 131, 177, .6);
     }
+`
+
+export const ErrorMsg = styled.div`
+  background-color: rgba(206, 151, 151, 0.55);
+  width: 70%;
+  border: 1px solid red;
+  border-radius: 4px;
+  margin-top: 5%;
+  padding: 10px;
+  text-align: justify;
+  color: red;
+  position: relative;
+  transition: all .2s ease-in-out;
+  &:hover {
+    box-shadow: 0 0 5px 0 red;
+  }
+`
+
+export const CloseBtn = styled(AiOutlineCloseCircle)`
+  position: absolute;
+  right: 0;
+  top: 0;
+  cursor: pointer;
 `

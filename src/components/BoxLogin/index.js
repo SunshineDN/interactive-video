@@ -38,7 +38,7 @@ const BoxLogin = () => {
         {error ?
             <ErrorMsg>
               {error}
-              <CloseBtn/>
+              <CloseBtn onClick={e => setError("")}/>
             </ErrorMsg> : null}
       </Container>
     </>

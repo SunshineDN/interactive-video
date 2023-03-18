@@ -26,7 +26,7 @@ export function useLoginValidate (email, password, cargo, setError, setIsDisable
                 setError(error.message)
                 setIsDisabled(false)
             }
-        }, [email, password, cargo, setError, navigate])
+        }, [email, password, cargo, setError, navigate, setIsDisabled])
     )
 
 }

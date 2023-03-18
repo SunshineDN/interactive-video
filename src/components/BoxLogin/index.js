@@ -6,7 +6,7 @@ const BoxLogin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [cargo, setCargo] = useState("");
-  const [error, setError] = useState("Erro encontrado: O email ou a senha estão inválidos, favor conferir!");
+  const [error, setError] = useState("");
   const [isDisabled, setIsDisabled] = useState(true);
 
   useEffect(() => {
@@ -19,7 +19,7 @@ const BoxLogin = () => {
 
   return (
     <>
-      <Container onSubmit={ useLoginValidate(email, password, cargo, setError) } msg={!!error}>
+      <Container onSubmit={ useLoginValidate(email, password, cargo, setError, setIsDisabled) } msg={!!error}>
         <InputWrapper>
           <Label htmlFor='user'>Email</Label>
           <Input id='user' type="email" name={"email"} value={email} onChange={e => setEmail(e.target.value)} />
@@ -34,7 +34,7 @@ const BoxLogin = () => {
             <Label htmlFor='professor'>Professor</Label>
           </Radios>
         </RadioWrapper>
-        <Submit disabled={isDisabled} />
+        <Submit disabled={isDisabled}/>
         {error ?
             <ErrorMsg>
               {error}

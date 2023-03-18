@@ -1,9 +1,10 @@
 package com.backend.vosce.controllers;
 
 import com.backend.vosce.entities.Alunos;
+import com.backend.vosce.entities.Professores;
 import com.backend.vosce.records.Login;
 import com.backend.vosce.services.ServiceAlunos;
-import org.apache.coyote.Response;
+import com.backend.vosce.services.ServiceProfessores;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,33 +15,33 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/alunos")
+@RequestMapping("/professores")
 @CrossOrigin(origins = "*")
-public class AlunosControllers {
+public class ProfessoresControllers {
     @Autowired
-    ServiceAlunos serviceAlunos;
+    ServiceProfessores serviceProfessores;
 
     @GetMapping("/")
-    public ResponseEntity<List<Alunos>> findAll(){
+    public ResponseEntity<List<Professores>> findAll(){
         try {
-            List<Alunos> allStudents = serviceAlunos.findAllStudents();
-            return ResponseEntity.ok().header("Header-Custom", "Lista de Alunos").body(allStudents);
+            List<Professores> allTeachers = serviceProfessores.findAllTeachers();
+            return ResponseEntity.ok().header("Header-Custom", "Lista de Alunos").body(allTeachers);
         } catch (Exception error){
-            return ResponseEntity.internalServerError().body((List<Alunos>) error);
+            return ResponseEntity.internalServerError().body((List<Professores>) error);
         }
     }
 
     @PostMapping("/register")
-    public ResponseEntity<Object> register(@RequestBody Alunos aluno){
+    public ResponseEntity<Object> register(@RequestBody Professores professor){
         try {
-            Alunos createdStudent = serviceAlunos.createAluno(aluno);
+            Professores createdTeacher = serviceProfessores.createTeacher(professor);
             URI uri = ServletUriComponentsBuilder
                     .fromCurrentContextPath()
-                    .path("/alunos/{cpf}")
-                    .buildAndExpand(createdStudent.getCpf())
+                    .path("/professores/{cpf}")
+                    .buildAndExpand(createdTeacher.getCpf())
                     .toUri();
 
-            return ResponseEntity.created(uri).header("Custom-Header", "Aluno criado com sucesso!").body(aluno);
+            return ResponseEntity.created(uri).header("Custom-Header", "Aluno criado com sucesso!").body(professor);
         }catch (Exception error){
             return ResponseEntity.internalServerError().body(error);
         }
@@ -49,9 +50,9 @@ public class AlunosControllers {
     @GetMapping("/{cpf}")
     public ResponseEntity<Object> findByCpf(@PathVariable String cpf){
         try {
-            Optional<Alunos> studentFound = serviceAlunos.findByCpf(cpf);
-            if (studentFound != null) {
-                return ResponseEntity.ok().header("Custom-Header", "Usuário encontrado!").body(studentFound);
+            Optional<Professores> teacherFound = serviceProfessores.findByCpf(cpf);
+            if (teacherFound != null) {
+                return ResponseEntity.ok().header("Custom-Header", "Usuário encontrado!").body(teacherFound);
             } else {
                 return ResponseEntity.notFound().header("Custom-Header", "Usuário não encontrado!").build();
             }
@@ -63,7 +64,7 @@ public class AlunosControllers {
     @PostMapping("/login")
     public ResponseEntity<Object> login(@RequestBody Login login){
         try {
-            if (serviceAlunos.loginAluno(login)){
+            if (serviceProfessores.loginProfessor(login)){
                 return ResponseEntity.ok().body("Usuário encontrado e logado com sucesso!");
             } else {
                 return ResponseEntity.notFound().build();
@@ -76,7 +77,7 @@ public class AlunosControllers {
     @DeleteMapping("/{cpf}")
     public ResponseEntity<Object> deleteStudent(@PathVariable String cpf){
         try {
-            if (serviceAlunos.deleteStudent(cpf)){
+            if (serviceProfessores.deleteStudent(cpf)){
                 return ResponseEntity.status(202).body("Usuário deletado com sucesso!");
             } else {
                 return ResponseEntity.status(404).body("Usuário não encontrado");

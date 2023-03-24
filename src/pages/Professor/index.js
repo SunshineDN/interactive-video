@@ -1,13 +1,13 @@
 import React from 'react'
 import Footer from '../../components/Footer'
 import Header from '../../components/Header'
-import { Title } from './styles'
+import TeacherComp from '../../components/TeacherComp'
 
 const Professor = () => {
     return (
         <>
             <Header />
-            <Title>Professor</Title>
+            <TeacherComp />
             <Footer />
         </>
     )

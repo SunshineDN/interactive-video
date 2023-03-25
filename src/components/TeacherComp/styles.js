@@ -1,7 +1,9 @@
 import styled from "styled-components";
 import {IoMdAddCircle} from "react-icons/io";
+import {IoMdRemoveCircle} from "react-icons/io";
+import {IoMdCloseCircle} from "react-icons/io";
 
-export const Container = styled.div`
+export const Container = styled.form`
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -48,7 +50,18 @@ export const QuestionSpan = styled.span`
     margin: 0;
 `;
 
-export const QuestionBtn = styled(IoMdAddCircle)`
+export const QuestionBtnAdd = styled(IoMdAddCircle)`
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    transition: all .3s ease-in-out;
+    
+    &:hover {
+        color: rgb(141, 168, 51);
+    }
+`;
+
+export const QuestionBtnRemove = styled(IoMdRemoveCircle)`
     width: 30px;
     height: 30px;
     cursor: pointer;
@@ -86,13 +99,13 @@ export const QuestionDescriptionLabel = styled.label`
     margin-bottom: 10px;
 `;
 
-export const QuestionDescription = styled.textarea`
+export const QuestionDescription = styled.input`
+    height: 40px;
     width: 100%;
-    height: 100px;
     background-color: #fff;
     border: 1px solid #333;
     border-radius: 5px;
-    padding: 10px;
+    padding: 0 10px;
     box-sizing: border-box;
     margin-bottom: 10px;
 `;
@@ -134,6 +147,21 @@ export const QuestionAddObjectSection = styled.div`
     padding: 20px;
     box-sizing: border-box;
     border-radius: 5px;
+    position: relative;
+`;
+
+export const QuestionAddObjectBtnClose = styled(IoMdCloseCircle)`
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    transition: all .3s ease-in-out;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+
+    &:hover {
+        color: rgb(168, 61, 51);
+    }
 `;
 
 export const QuestionAddObjectTitle = styled.label`
